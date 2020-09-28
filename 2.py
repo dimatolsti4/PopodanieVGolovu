@@ -12,7 +12,7 @@ screen = pygame.display.set_mode((1200, 800))
 color_green = (0, 255, 0)
 color_black = (0, 0, 0)
 color_white = (255, 255, 255)
-color_toxic = (230, 0, 255)
+color_toxic = (230, 0, 255, 255)
 
 def vetka_vpravo(x1, y1, size1, num_list):
     x1_size = size1 * 125
@@ -28,8 +28,8 @@ def vetka_vgolovu(x, y, size, num_list):
     for i in range(1,num_list+1):
         ellipse(screen, color_green, (x - 0.35 * x_size * i / num_list, y - 0.2 * y_size * i / num_list, size * 5, size * 25))
 
-def bambuk(x, y, size):
-    x_size = size*10
+def bambuk(x, y, size, splush):
+    x_size = size*10*splush
     y_size = size*30
     rect(screen, color_green, (x, y, x_size, y_size))
     rect(screen, color_green, (x, y - 1.1 * y_size, x_size, y_size))
@@ -61,15 +61,33 @@ def MEdvED(x, y, size, color):
     ellipse(screen, color_black, (x + x_size * 0.1, y + y_size * 4, 40, y_size))
     ellipse(screen, color_black, (x + x_size * 1.8, y, x_size, y_size))
 
+def Reversed(x, y, size, color):
+    x_size = size * 50
+    y_size = size * 30
+    x = x + x_size
+    ellipse(screen, color_black, (x, y, x_size, y_size))
+    ellipse(screen, color, (x - x_size * 4.3, y + y_size * 2 / 3, x_size * 5 , y_size * 5))
+    rect(screen, color_black, (x - x_size * 1.8, y + y_size * 8 / 3, x_size * 6 /5, y_size * 10 / 3))
+    ellipse(screen, color_black, (x - x_size * 2, y + y_size * 11 / 3, x_size, y_size * 10 / 3))
+    ellipse(screen, color_black, (x - x_size * 1.7, y + y_size * 17 / 3, x_size * 1.6, y_size * 5 / 3))
+    ellipse(screen, color_black, (x - x_size * 4, y + y_size * 11 / 3, x_size, y_size * 10 / 3))
+    ellipse(screen, color_black, (x - x_size * 3.7, y + y_size * 17 / 3, x_size * 1.6, y_size * 5 / 3))
+    ellipse(screen, color_black, (x - x_size * 0.2, y + y_size * 10 / 3, x_size, y_size * 10 / 3))
+    ellipse(screen, color, (x - x_size * 1.8, y - y_size / 3, x_size * 3, y_size * 6))
+    ellipse(screen, color_black, (x + x_size * 0.2, y + y_size * 4 / 3, x_size * 4 / 5, y_size * 5 / 3))
+    ellipse(screen, color_black, (x - x_size, y + y_size * 4 / 3, x_size, y_size * 5 / 3))
+    ellipse(screen, color_black, (x - x_size * 0.1, y + y_size * 4, 40, y_size))
+    ellipse(screen, color_black, (x - x_size * 1.8, y, x_size, y_size))
 
 rect(screen, (255, 94, 196), (0, 0, 1200, 800))
 
-bambuk(485, 400, 4)
-bambuk(900, 350 ,3)
-bambuk(50, 300, 3)
-bambuk(200, 650, 3)
+Reversed(300, 280, 0.8, color_toxic)
+bambuk(485, 400, 4, 0.6)
+bambuk(900, 350 ,3, 1)
+bambuk(50, 300, 3, 1)
+bambuk(200, 650, 3, 1)
 MEdvED(500, 480, 1, color_white)
-MEdvED(900, 480, 0.8, color_toxic)
+MEdvED(800, 480, 0.8, color_white)
 
 pygame.display.update()
 clock = pygame.time.Clock()
